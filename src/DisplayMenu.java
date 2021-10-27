@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class DisplayMenu {
 
         static void displayMenu() {
+            Scanner scan = new Scanner(System.in);
 
-            HighScore scoreManager = new HighScore();
+            HighScore scoreManager = new HighScore(scan);
             scoreManager.importSavedScores();
 
             String playerChoiceMenu;
@@ -20,7 +21,6 @@ public class DisplayMenu {
                         """);
                 System.out.println("choice : ");
 
-                Scanner scan = new Scanner(System.in);
                 playerChoiceMenu = scan.nextLine();
 
                 /* Recover choice of the player*/

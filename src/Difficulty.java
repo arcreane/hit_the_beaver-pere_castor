@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Difficulty {
 
-    static String[][] DifficultyMenu() {
+    static void DifficultyMenu() {
 
         String playerChoiceDifficulty;
-        String [][] gameBoard = new String [0][0];
+        String[][] gameBoard = new String[0][0];
 
         while (true) {
             System.out.println("Hit the beaver !!!!!");
@@ -31,18 +31,19 @@ public class Difficulty {
 
             case "1":
                 System.out.println("You choose easy!!!");
-                gameBoard = BoardManagement.BoardGeneration(5, 5);
+                BoardManagement.BoardGeneration(5, 5);
                 break;
 
             case "2":
                 System.out.println("You choose normal!!!");
-                gameBoard = BoardManagement.BoardGeneration(7, 7);
+                BoardManagement.BoardGeneration(7, 7);
                 break;
 
             case "3":
                 System.out.println("You choose hard!!!");
-                gameBoard = BoardManagement.BoardGeneration(10, 10);
+                BoardManagement.BoardGeneration(10, 10);
                 break;
+
             case "4":
                 System.out.println("You choose to go back to main menu");
                 DisplayMenu.displayMenu();
@@ -53,7 +54,7 @@ public class Difficulty {
                 DifficultyMenu();
 
 
-        }return gameBoard;
+        }
     }
 
 }

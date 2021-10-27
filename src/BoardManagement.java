@@ -2,9 +2,10 @@ import com.sun.jdi.IntegerValue;
 
 public class BoardManagement {
 
+    static String[][] gameTable;
     //Function to create and fill the table depending on specified height and width
-    static String[][] BoardGeneration(int height, int width){
-        String[][] gameTable = new String[height][width];
+    static void BoardGeneration(int height, int width){
+         gameTable = new String[height][width];
         for(int i = 0; i < gameTable.length; i++)
         {
             for(int j = 0; j<gameTable[i].length; j++)
@@ -12,12 +13,10 @@ public class BoardManagement {
                 gameTable[i][j] = " ";
             }
         }
-
-        return gameTable;
     }
 
     //Function wish displays gameBoard in grid with indexes
-    static void BoardDisplay(String[][] gameTable){
+    static void BoardDisplay(){
         //print tableau avec indexes
         int width=gameTable[0].length;
 
@@ -51,7 +50,7 @@ public class BoardManagement {
     if any.To be initialized with int[] previousCoordinates = {-1, -1} so the function doesn't search
     for a Beaver when there is none.
     */
-    static void BeaverPlacement(String[][] gameTable, int[] previousCoordinates){
+    static void BeaverPlacement( int[] previousCoordinates){
         if (previousCoordinates[0] == -1){
             int x = (int)(Math.random()*(gameTable.length));
             int y = (int)(Math.random()*(gameTable[0].length));

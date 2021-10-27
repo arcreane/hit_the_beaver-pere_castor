@@ -3,11 +3,13 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
 
+
         while (true) {
 
 
 
             DisplayMenu.displayMenu();
+            BoardManagement.BoardDisplay();
 
             Scanner scanner = new Scanner(System.in);
             System.out.println("""
