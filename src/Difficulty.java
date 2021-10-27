@@ -5,7 +5,7 @@ public class Difficulty {
     static String[][] DifficultyMenu() {
 
         String playerChoiceDifficulty;
-        String [][] gameBoard = new String [0][0];
+        String[][] gameBoard = new String[0][0];
 
         while (true) {
             System.out.println("Hit the beaver !!!!!");
@@ -53,7 +53,8 @@ public class Difficulty {
                 DifficultyMenu();
 
 
-        }return gameBoard;
+        }
+        return gameBoard;
     }
 
 }
