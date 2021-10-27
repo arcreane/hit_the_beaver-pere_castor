@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class menu {
+
+    public static void Menu() {
+
+        /*public static void menuDisplay()*/
+
+        System.out.println("Welcome to hit the beaver!!!!!!");
+        System.out.println("What do you want to do : ");
+        System.out.println("""
+                1. Play game
+                2. Highscores
+                3. Quit
+                """);
+        Scanner scan = new Scanner(System.in);
+        int playerChoiceMenu = scan.nextInt();
+
+        switch (playerChoiceMenu) {
+            case 1:
+                /* vers Fonction Difficulty choice*/
+                break;
+            case 2:
+                /* show highscore table*/
+                break;
+            case 3:
+                System.out.println("See you later!!!!");
+                break;
+            default:
+                System.out.println("Please enter 1, 2 or 3");
+
+
+        }
+
+
+    }
+}
