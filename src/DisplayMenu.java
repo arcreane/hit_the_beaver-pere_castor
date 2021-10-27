@@ -20,10 +20,9 @@ public class DisplayMenu {
                         3. Quit
                         """);
                 System.out.println("choice : ");
-
                 playerChoiceMenu = scan.nextLine();
 
-                /* Recover choice of the player*/
+                /*Condition to avoid string answer*/
 
                 if (playerChoiceMenu.equals("1") || playerChoiceMenu.equals("2") || playerChoiceMenu.equals("3")) {
                     break;
@@ -53,6 +52,7 @@ public class DisplayMenu {
                     break;
 
                 default:
+                    /* Quit the menu*/
                     System.out.println("See you later!!!!");
                     break;
 
