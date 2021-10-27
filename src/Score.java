@@ -1,4 +1,5 @@
-public class Score {
+
+public class Score implements Comparable {
 
     private String name;
     private int points;
@@ -17,7 +18,14 @@ public class Score {
         return this.points;
     }
 
+    @Override
     public String toString() {
         return this.name + "\t" + this.points;
+    }
+
+    @Override
+    public int compareTo(Object compared) {
+        int compareScore = ((Score) compared).getPoints();
+        return this.getPoints()-compareScore;
     }
 }
