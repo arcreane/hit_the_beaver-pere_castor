@@ -12,7 +12,7 @@ public class Difficulty {
                 1. Easy (table 5x5 with 4s to hit)
                 2. Normal (table 7x7 with 3.5s to hit)
                 3. Hard (table 10x10 with 3s to hit)
-                4. Back to main menu          
+                4. Back to main menu         
                    """);
 
         System.out.println("Choice : ");
@@ -24,25 +24,29 @@ public class Difficulty {
             case 1:
                 System.out.println("You choose easy!!!");
                 gameBoard = BoardManagement.BoardGeneration(5, 5);
+                break;
 
             case 2:
                 System.out.println("You choose normal!!!");
                 gameBoard = BoardManagement.BoardGeneration(7, 7);
+                break;
 
             case 3:
                 System.out.println("You choose hard!!!");
                 gameBoard = BoardManagement.BoardGeneration(10, 10);
-
+                break;
             case 4:
                 System.out.println("You choose to go back to main menu");
                 DisplayMenu.displayMenu();
+                break;
 
             default:
                 /* if wrong selection of option return to Display Menu*/
                 System.out.println("Please enter 1, 2 or 3");
                 DifficultyMenu();
 
-                return gameBoard;
-        }
+
+        }return gameBoard;
     }
+
 }
