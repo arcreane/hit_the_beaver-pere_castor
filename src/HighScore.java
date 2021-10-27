@@ -23,8 +23,9 @@ public class HighScore {
     }
 
     public void getScores() {
-        for (Score i : this.scores)
-        System.out.println(i);
+        for (Score i : this.scores) {
+            System.out.println(i);
+        }
     }
 
     public void save(String name, int score) {

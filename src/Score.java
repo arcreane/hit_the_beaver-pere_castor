@@ -20,5 +20,4 @@ public class Score {
     public String toString() {
         return this.name + "\t" + this.points;
     }
-
 }
