@@ -10,7 +10,7 @@ public class menu {
         System.out.println("What do you want to do : ");
         System.out.println("""
                 1. Play game
-                2. Highscores
+                2. High Scores
                 3. Quit
                 """);
         Scanner scan = new Scanner(System.in);
