@@ -4,6 +4,9 @@ public class DisplayMenu {
 
         static void displayMenu() {
 
+            HighScore scoreManager = new HighScore();
+            scoreManager.importSavedScores();
+
             String playerChoiceMenu;
 
             System.out.println("\t\t\t\t\t" + "Welcome to hit the beaver!!!!!!\n");
@@ -45,6 +48,8 @@ public class DisplayMenu {
                 case "2" :
                     /* show high scores table*/
                     System.out.println("You choose to watch High scores");
+                    scoreManager.sort();
+                    scoreManager.getScores();
                     break;
 
                 default:
