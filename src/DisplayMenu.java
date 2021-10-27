@@ -11,12 +11,13 @@ public class DisplayMenu {
                     2. High Scores
                     3. Quit
                     """);
+            System.out.println("choice : ");
             Scanner scan = new Scanner(System.in);
             int playerChoiceMenu = scan.nextInt();
 
             switch (playerChoiceMenu) {
                 case 1:
-                    /* vers Fonction Difficulty choice*/
+                    /* To Fonction Difficulty choice*/
                     break;
                 case 2:
                     /* show high scores table*/
