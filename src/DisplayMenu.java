@@ -50,6 +50,7 @@ public class DisplayMenu {
                 System.out.println("You choose to watch High scores");
                 scoreManager.sort();
                 scoreManager.getScores();
+                displayMenu();
                 break;
 
             default:

@@ -63,7 +63,7 @@ public class GameLoop {
         DisplayMenu.scoreManager.endScreen();
         System.out.print("Play again? Y/N");
         String input = scan.nextLine();
-        while (!(input.equals("Y") && input.equals("N")))  {
+        while (!(input.equals("Y") || !(input.equals("Y")))) {
             System.out.println("Invalid command");
             input = scan.nextLine();
         }

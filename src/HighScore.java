@@ -11,25 +11,30 @@ public class HighScore {
     private ArrayList<Score> scores;
     private int points;
     private Scanner scan;
+    private boolean firstRun;
 
     // Class constructor.
     public HighScore(Scanner scan) {
         this.points = 0;
         this.scores = new ArrayList<>();
         this.scan = scan;
+        this.firstRun = true;
     }
 
     // Method that reads saved scores from file.
     public void importSavedScores() {
-        try (Scanner reader = new Scanner(Paths.get("scores.txt"))) {
-            while (reader.hasNextLine()) {
-                String[] lines = reader.nextLine().split(",");
-                this.scores.add(new Score(lines[0], Integer.valueOf(lines[1])));
-            }
+        if (firstRun) {
+            try (Scanner reader = new Scanner(Paths.get("scores.txt"))) {
+                while (reader.hasNextLine()) {
+                    String[] lines = reader.nextLine().split(",");
+                    this.scores.add(new Score(lines[0], Integer.valueOf(lines[1])));
+                }
 
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
+            } catch (Exception e) {
+                System.out.println("Error: " + e);
+            }
         }
+        firstRun = false;
     }
 
     // Displays high scores.
@@ -58,7 +63,7 @@ public class HighScore {
 
         }
 
-        if (this.getCurrentScore() >= this.scores.get(4).getPoints())  {
+        if (this.getCurrentScore() > this.scores.get(4).getPoints())  {
             System.out.print("Input name to enter Hall of Fame: ");
             String name = scan.nextLine();
             this.add(name, this.getCurrentScore());
