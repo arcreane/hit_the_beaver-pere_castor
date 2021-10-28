@@ -12,7 +12,7 @@ public class HighScore {
     private int points;
     private Scanner scan;
 
-    // Class constructor that takes Scanner as parameter avoiding new instance.
+    // Class constructor.
     public HighScore(Scanner scan) {
         this.points = 0;
         this.scores = new ArrayList<>();
@@ -43,12 +43,8 @@ public class HighScore {
     }
 
     // Increments score by 1, 2 or 3 depending on difficulty.
-    public void incrementScore(String playerChoiceDifficulty ) {
-        int multiplier = Integer.valueOf(playerChoiceDifficulty);
-        if (this.points == 0)  {
-            this.points++;
-        }
-        this.points += this.points*multiplier;
+    public void incrementScore() {
+        this.points++;
     }
 
     // Displays score and asks for name if user is in top 5.
@@ -71,11 +67,12 @@ public class HighScore {
         }
 
     }
-
+    // Adds new score
     public void add(String name, int score) {
         this.scores.add(new Score(name, score));
     }
 
+    // Saves scores to txt file upon closing game.
     public void save() {
         try {
             FileWriter fw = new FileWriter("scores.txt");
@@ -92,15 +89,19 @@ public class HighScore {
         }
     }
 
+    // Resets score for next round.
     public void reset()  {
         this.points = 0;
     }
 
+    // Sorts scores from hightest to lowest.
     public void sort() {
         Collections.sort(this.scores);
     }
 
+    // Returns score for current game.
     public int getCurrentScore()  {
-        return this.points;
+        int multiplier = Integer.valueOf(Difficulty.playerChoiceDifficulty);
+        return this.points * multiplier;
     }
 }

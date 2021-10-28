@@ -35,7 +35,7 @@ public class GameLoop {
             if (x_coordinate-1 == BoardManagement.previousX && y_coordinate-1 == BoardManagement.previousY)
             {
                 System.out.println("It's a hit!");
-                DisplayMenu.scoreManager.incrementScore(Difficulty.playerChoiceDifficulty);
+                DisplayMenu.scoreManager.incrementScore();
 
             }
             else
