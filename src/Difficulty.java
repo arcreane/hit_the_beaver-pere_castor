@@ -32,17 +32,17 @@ public class Difficulty {
 
             case "1":
                 System.out.println("You choose easy!!!");
-                BoardManagement.BoardGeneration(5, 5);
+                BoardManagement.BoardGeneration("easy");
                 break;
 
             case "2":
                 System.out.println("You choose normal!!!");
-                BoardManagement.BoardGeneration(7, 7);
+                BoardManagement.BoardGeneration("normal");
                 break;
 
             case "3":
                 System.out.println("You choose hard!!!");
-                BoardManagement.BoardGeneration(10, 10);
+                BoardManagement.BoardGeneration("hard");
                 break;
 
             case "4":
@@ -56,6 +56,9 @@ public class Difficulty {
 
 
         }
+        GameLoop.GamePlay();
     }
+
+
 
 }

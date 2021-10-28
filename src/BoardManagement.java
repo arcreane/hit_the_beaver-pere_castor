@@ -1,70 +1,80 @@
 import com.sun.jdi.IntegerValue;
 
 public class BoardManagement {
+    static int dimension = 0;
+    static String[][] gameBoard;
+    static int previousX = -1;
+    static int previousY = -1;
 
-    static String[][] gameTable;
-    //Function to create and fill the table depending on specified height and width
-    static void BoardGeneration(int height, int width){
-         gameTable = new String[height][width];
-        for(int i = 0; i < gameTable.length; i++)
+    //Function to create and fill the table depending on specified dimension depending on difficulty
+
+    static void BoardGeneration(String difficulty){
+
+        if (difficulty.equals("easy"))
+            dimension = 5;
+        else if (difficulty.equals("normal"))
+            dimension = 7;
+        else
+            dimension = 10;
+        gameBoard = new String[dimension][dimension];
+        for(int i = 0; i < dimension; i++)
         {
-            for(int j = 0; j<gameTable[i].length; j++)
+            for(int j = 0; j<dimension; j++)
             {
-                gameTable[i][j] = " ";
+                gameBoard[i][j] = " ";
             }
         }
     }
 
-    //Function wish displays gameBoard in grid with indexes
+    //Function which displays gameBoard in grid with indexes
     static void BoardDisplay(){
         //print tableau avec indexes
-        int width=gameTable[0].length;
 
         //index x
         System.out.print("   ");
-        for(int i =0; i < width ; i++){
+        for(int i =0; i < dimension ; i++){
             System.out.print(" " + (i+1));
         }
 
         System.out.print("\n   ");
-        for(int i =0; i < width ; i++){
+        for(int i =0; i < dimension ; i++){
             System.out.print(" _");
         }
 
         //index y + gameBoard content
-        for(int i = 0; i < gameTable.length; i++){
+        for(int i = 0; i < dimension; i++){
             if (i >= 9){
                 System.out.print("\n"+ (i+1) + "|");
             }
             else {
                 System.out.print("\n "+ (i+1) + "|");
             }
-            for(int j = 0; j<gameTable[i].length; j++)
-                System.out.print(" " + gameTable[i][j]);
+            for(int j = 0; j<dimension; j++)
+                System.out.print(" " + gameBoard[i][j]);
         }
         System.out.println();
     }
 
     /*
-    function wish place a new Beaver in Gameboard at random coordinates and delete the previous one
+    function which place a new Beaver in Gameboard at random coordinates and delete the previous one
     if any.To be initialized with int[] previousCoordinates = {-1, -1} so the function doesn't search
     for a Beaver when there is none.
     */
-    static void BeaverPlacement( int[] previousCoordinates){
-        if (previousCoordinates[0] == -1){
-            int x = (int)(Math.random()*(gameTable.length));
-            int y = (int)(Math.random()*(gameTable[0].length));
-            gameTable[y][x]="B";
-            previousCoordinates[0] = y;
-            previousCoordinates[1] = x;
+    static void BeaverPlacement(){
+        if (previousX == -1){
+            int x = (int)(Math.random()*(dimension));
+            int y = (int)(Math.random()*(dimension));
+            gameBoard[y][x]="B";
+            previousY = y;
+            previousX = x;
         }
         else {
-            gameTable[previousCoordinates[0]][previousCoordinates[1]]=" ";
-            int x = (int)(Math.random()*(gameTable.length));
-            int y = (int)(Math.random()*(gameTable[0].length));
-            gameTable[y][x]="B";
-            previousCoordinates[0] = y;
-            previousCoordinates[1] = x;
+            gameBoard[previousY][previousX]=" ";
+            int x = (int)(Math.random()*(dimension));
+            int y = (int)(Math.random()*(dimension));
+            gameBoard[y][x]="B";
+            previousY = y;
+            previousX = x;
         }
     }
 }
