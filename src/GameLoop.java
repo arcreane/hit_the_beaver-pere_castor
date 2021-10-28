@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
 public class GameLoop {
+    static int x_coordinate;
+    static int y_coordinate;
+    static int score = 0;
+
+    public GameLoop() {
+    }
 
     static void GamePlay() {
 
@@ -10,30 +16,40 @@ public class GameLoop {
 
         //3 sec timer before game start
         System.out.println("get ready");
-        for (int i = 0; i<3; i++){
-            System.out.println(3-i);
+
+        int i;
+        for(i = 0; i < 3; ++i) {
+            System.out.println(3 - i);
+
             try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.sleep(1000L);
+            } catch (InterruptedException var2) {
+                var2.printStackTrace();
             }
         }
         //game loops for ten rounds, missing the timer for each rounds
-        for (int i=0; i<10; i++){
+        for(i = 0; i < 10; ++i) {
             BoardManagement.BeaverPlacement();
             BoardManagement.BoardDisplay();
             Scanner scanner = new Scanner(System.in);
-            System.out.println("""
-                    Where is the Beaver?!
-                    Enter x  and y coordinates :
-                    """);
-            //player inputs
-            int x_coordinate = scanner.nextInt();
-            int y_coordinate = scanner.nextInt();
+            // Here we ask the player for the beaver location
+            System.out.println("Where is the Beaver?!");
+            System.out.println("Enter numerical x coordinate value : ");
+            while(!scanner.hasNextInt()) {
+                System.out.println("Please enter a valid number");
+                scanner.next();
+            }
+            x_coordinate = scanner.nextInt();
+
+            System.out.println("Enter numerical y coordinate value : ");
+            while(!scanner.hasNextInt()) {
+                System.out.println("Please enter a valid number");
+                scanner.next();
+            }
+            y_coordinate = scanner.nextInt();
 
             //controlling if player inputs==beaver placement and score increment
-            if (x_coordinate-1 == BoardManagement.previousX && y_coordinate-1 == BoardManagement.previousY)
-            {
+            if (x_coordinate - 1 == BoardManagement.previousX && y_coordinate - 1 == BoardManagement.previousY) {
                 System.out.println("It's a hit!");
                 DisplayMenu.scoreManager.incrementScore();
 
