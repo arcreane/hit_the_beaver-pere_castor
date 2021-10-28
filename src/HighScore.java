@@ -67,6 +67,7 @@ public class HighScore {
             String name = scan.nextLine();
             this.add(name, this.getCurrentScore());
             this.sort();
+            this.getScores();
         }
 
     }

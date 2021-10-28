@@ -5,8 +5,8 @@ public class GameLoop {
     static void GamePlay() {
 
         Scanner scan = new Scanner(System.in);
-        HighScore scoreManager = new HighScore(scan);
-        scoreManager.reset();
+
+        DisplayMenu.scoreManager.reset();
 
         //3 sec timer before game start
         System.out.println("get ready");
@@ -35,7 +35,7 @@ public class GameLoop {
             if (x_coordinate-1 == BoardManagement.previousX && y_coordinate-1 == BoardManagement.previousY)
             {
                 System.out.println("It's a hit!");
-                scoreManager.incrementScore(Difficulty.playerChoiceDifficulty);
+                DisplayMenu.scoreManager.incrementScore(Difficulty.playerChoiceDifficulty);
 
             }
             else
@@ -44,6 +44,6 @@ public class GameLoop {
             }
 
         }
-        scoreManager.endScreen();
+        DisplayMenu.scoreManager.endScreen();
     }
 }
