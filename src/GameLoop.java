@@ -42,7 +42,8 @@ public class GameLoop {
             {
                 System.out.println("You missed!");
             }
-            scoreManager.endScreen();
+
         }
+        scoreManager.endScreen();
     }
 }

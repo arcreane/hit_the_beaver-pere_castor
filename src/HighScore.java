@@ -45,6 +45,9 @@ public class HighScore {
     // Increments score by 1, 2 or 3 depending on difficulty.
     public void incrementScore(String playerChoiceDifficulty ) {
         int multiplier = Integer.valueOf(playerChoiceDifficulty);
+        if (this.points == 0)  {
+            this.points++;
+        }
         this.points += this.points*multiplier;
     }
 
