@@ -28,9 +28,7 @@ public class GameLoop {
             BoardManagement.BoardDisplay();
             Scanner scanner = new Scanner(System.in);
             // Here we ask the player for the beaver location
-            System.out.println("Where is the Beaver?!\nEnter numerical x and y coordinates, separated by a space:\n");
             System.out.println("Where is the Beaver?!");
-
             System.out.println("Enter numerical x coordinate value : ");
             while(!scanner.hasNextInt()) {
                 System.out.println("Please enter a valid number");
