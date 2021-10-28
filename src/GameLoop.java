@@ -1,9 +1,13 @@
 import java.util.Scanner;
 
-public class GameLoop{
-    static int score= 0;
+public class GameLoop {
 
-    static void GamePlay(){
+    static void GamePlay() {
+
+        Scanner scan = new Scanner(System.in);
+        HighScore scoreManager = new HighScore(scan);
+        scoreManager.reset();
+
         //3 sec timer before game start
         System.out.println("get ready");
         for (int i = 0; i<3; i++){
@@ -21,7 +25,7 @@ public class GameLoop{
             Scanner scanner = new Scanner(System.in);
             System.out.println("""
                     Where is the Beaver?!
-                    Enter x  and y coordinates : 
+                    Enter x  and y coordinates :
                     """);
             //player inputs
             int x_coordinate = scanner.nextInt();
@@ -31,16 +35,14 @@ public class GameLoop{
             if (x_coordinate-1 == BoardManagement.previousX && y_coordinate-1 == BoardManagement.previousY)
             {
                 System.out.println("It's a hit!");
-                score++;
+                scoreManager.incrementScore(Difficulty.playerChoiceDifficulty);
 
             }
             else
             {
                 System.out.println("You missed!");
             }
-            System.out.println("score=" + score);
+            scoreManager.endScreen();
         }
-
     }
-
 }

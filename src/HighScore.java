@@ -12,12 +12,14 @@ public class HighScore {
     private int points;
     private Scanner scan;
 
+    // Class constructor that takes Scanner as parameter avoiding new instance.
     public HighScore(Scanner scan) {
-        this.scan = scan;
         this.points = 0;
         this.scores = new ArrayList<>();
+        this.scan = scan;
     }
 
+    // Method that reads saved scores from file.
     public void importSavedScores() {
         try (Scanner reader = new Scanner(Paths.get("scores.txt"))) {
             while (reader.hasNextLine()) {
@@ -30,6 +32,7 @@ public class HighScore {
         }
     }
 
+    // Displays high scores.
     public void getScores() {
         System.out.println("************* HIT THE BEAVER ************");
         System.out.println("************** HALL OF FAME *************\n***\n***");
@@ -39,12 +42,14 @@ public class HighScore {
         }
     }
 
+    // Increments score by 1, 2 or 3 depending on difficulty.
     public void incrementScore(String playerChoiceDifficulty ) {
         int multiplier = Integer.valueOf(playerChoiceDifficulty);
         this.points += this.points*multiplier;
     }
 
-    public void endScreen(Scanner scan) {
+    // Displays score and asks for name if user is in top 5.
+    public void endScreen() {
         System.out.println("************* HIT THE BEAVER ************");
         System.out.println("******** Your score: " + this.getCurrentScore());
         System.out.println("******");
