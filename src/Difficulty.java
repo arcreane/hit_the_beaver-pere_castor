@@ -21,7 +21,7 @@ public class Difficulty {
             System.out.println("Choice : ");
             Scanner scan = new Scanner(System.in);
             playerChoiceDifficulty = scan.nextLine();
-            if (playerChoiceDifficulty.equals("1") || playerChoiceDifficulty.equals("2") || playerChoiceDifficulty.equals("3")) {
+            if (playerChoiceDifficulty.equals("1") || playerChoiceDifficulty.equals("2") || playerChoiceDifficulty.equals("3") || playerChoiceDifficulty.equals("4")) {
                 break;
             } else
                 System.out.println("Please enter a valid choice");
