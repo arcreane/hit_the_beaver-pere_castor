@@ -39,8 +39,9 @@ public class HighScore {
         }
     }
 
-    public void incrementScore(int points) {
-        this.points += (points);
+    public void incrementScore(String playerChoiceDifficulty ) {
+        int multiplier = Integer.valueOf(playerChoiceDifficulty);
+        this.points += this.points*multiplier;
     }
 
     public void endScreen(Scanner scan) {
@@ -82,6 +83,10 @@ public class HighScore {
         }
     }
 
+    public void reset()  {
+        this.points = 0;
+    }
+
     public void sort() {
         Collections.sort(this.scores);
     }
@@ -89,5 +94,4 @@ public class HighScore {
     public int getCurrentScore()  {
         return this.points;
     }
-
 }

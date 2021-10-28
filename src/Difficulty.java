@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class Difficulty {
 
+    static String playerChoiceDifficulty =  "";
+
     static void DifficultyMenu() {
-
-        String playerChoiceDifficulty;
-
 
         while (true) {
             System.out.println("Hit the beaver !!!!!");
