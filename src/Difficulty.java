@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Difficulty {
 
     static String playerChoiceDifficulty =  "";
 
-    static void DifficultyMenu() {
+    static void DifficultyMenu() throws IOException {
 
         while (true) {
             System.out.println("Hit the beaver !!!!!");
@@ -55,7 +56,8 @@ public class Difficulty {
 
 
         }
-        GameLoop.GamePlay();
+        GameLoop.GameCount();
+        GameLoop.GameRound();
     }
 
 }

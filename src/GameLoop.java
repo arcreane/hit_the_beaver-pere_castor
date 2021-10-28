@@ -1,16 +1,19 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class GameLoop {
-    static int x_coordinate;
-    static int y_coordinate;
+    static String x_coordinate;
+    static String y_coordinate;
     static int score = 0;
+    static int roundNumber = 0;
 
     public GameLoop() {
     }
 
-    static void GamePlay() {
+    static void GameCount() throws IOException {
 
-        Scanner scan = new Scanner(System.in);
 
         DisplayMenu.scoreManager.reset();
 
@@ -18,7 +21,7 @@ public class GameLoop {
         System.out.println("get ready");
 
         int i;
-        for(i = 0; i < 3; ++i) {
+        for (i = 0; i < 3; ++i) {
             System.out.println(3 - i);
 
             try {
@@ -27,39 +30,60 @@ public class GameLoop {
                 var2.printStackTrace();
             }
         }
-        //game loops for ten rounds, missing the timer for each rounds
-        for(i = 0; i < 10; ++i) {
+    }
+
+        static void GameRound() throws IOException {
             BoardManagement.BeaverPlacement();
             BoardManagement.BoardDisplay();
-            Scanner scanner = new Scanner(System.in);
-            // Here we ask the player for the beaver location
+
             System.out.println("Where is the Beaver?!");
-            System.out.println("Enter numerical x coordinate value : ");
-            while(!scanner.hasNextInt()) {
-                System.out.println("Please enter a valid number");
-                scanner.next();
+
+
+            int x = 6;
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+            long startTime = System.currentTimeMillis();
+            while ((System.currentTimeMillis() - startTime) < x * 1000 &&
+                    !in.ready()) {
             }
-            x_coordinate = scanner.nextInt();
+            String[] coordinates_input=new String[2];
 
-            System.out.println("Enter numerical y coordinate value : ");
-            while(!scanner.hasNextInt()) {
-                System.out.println("Please enter a valid number");
-                scanner.next();
-            }
-            y_coordinate = scanner.nextInt();
 
-            //controlling if player inputs==beaver placement and score increment
-            if (x_coordinate - 1 == BoardManagement.previousX && y_coordinate - 1 == BoardManagement.previousY) {
-                System.out.println("It's a hit!");
-                DisplayMenu.scoreManager.incrementScore();
 
+            if (in.ready())
+            {
+
+                coordinates_input = in.readLine().split(" ");
+
+                x_coordinate = coordinates_input[0];
+                y_coordinate = coordinates_input[1];
+
+                if (Integer.parseInt(x_coordinate) - 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate) - 1 == BoardManagement.previousY)
+                {
+                    System.out.println("It's a hit!");
+                    DisplayMenu.scoreManager.incrementScore();
+                    roundNumber++;
+                }
+                else
+                {
+                    System.out.println("You missed!");
+                    roundNumber++;
+
+                }
+                GameRound();
             }
             else
             {
-                System.out.println("You missed!");
+                System.out.println("you did not enter data");
+                GameRound();
+                roundNumber++;
             }
-
         }
+}
+
+
+    /*static void Endgame() {
         DisplayMenu.scoreManager.endScreen();
         System.out.print("Play again? Y/N");
         String input = scan.nextLine();
@@ -73,5 +97,5 @@ public class GameLoop {
         else if (input.equals("Y"))  {
             GamePlay();
         }
-    }
-}
+
+}*/

@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class DisplayMenu {
@@ -5,7 +6,7 @@ public class DisplayMenu {
     static Scanner scan = new Scanner(System.in);
     static HighScore scoreManager = new HighScore(scan);
 
-    static void displayMenu() {
+    static void displayMenu() throws IOException {
 
         scoreManager.importSavedScores();
 
