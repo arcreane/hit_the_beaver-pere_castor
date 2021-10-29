@@ -38,11 +38,12 @@ public class DisplayMenu {
         while (true) {
             System.out.println("What do you want to do : \n");
             System.out.println("""
-                        1. Play game
-                        2. High Scores
-                        3. Quit
+                                            Press
+                        Play game           -> 1
+                        High Scores         -> 2
+                        Quit                -> 3
                         """);
-            System.out.println("choice : ");
+            System.out.println("You have selected : ");
             playerChoiceMenu = scan.nextLine();
 
             /*Condition to avoid string answer*/
@@ -63,23 +64,22 @@ public class DisplayMenu {
         switch (playerChoiceMenu) {
             case "1" :
                 /* To Function Difficulty choice*/
-                System.out.println("You choose to play");
                 Difficulty.DifficultyMenu();
                 break;
 
             case "2" :
                 /* show high scores table*/
-                System.out.println("You choose to watch High scores");
+                System.out.println("Loading high scores...\n");
                 scoreManager.sort();
                 scoreManager.getScores();
-                System.out.println("Press Enter to go back");
+                System.out.println("Press Enter to access the main menu\n");
                 scan.nextLine();
                 displayMenu();
                 break;
 
             default:
                 /* Quit the menu*/
-                System.out.println("See you later!!!!");
+                System.out.println("\nSee you later!!!! =^.^=");
                 scoreManager.save();
                 System.exit(0);
 

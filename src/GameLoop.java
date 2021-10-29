@@ -45,7 +45,7 @@ public class GameLoop {
             //user input in Bufferreader + counter increment to count number of rounds
             System.out.println("Where is the Beaver?!");
             roundNumber++;
-            System.out.println("Enter x then y");
+            System.out.println("Enter x, then y");
             BufferedReader inx = new BufferedReader(new InputStreamReader(System.in));
             BufferedReader iny = new BufferedReader(new InputStreamReader(System.in));
 
@@ -66,7 +66,7 @@ public class GameLoop {
                     try {Integer.parseInt(x_coordinate);
                     }
                     catch(NumberFormatException N){
-                        System.out.println("invalid coordinates please enter only numbers");
+                        System.out.println("invalid coordinates, please enter a numerical value");
                         GameRound();
                     }
                     finally {
@@ -85,10 +85,10 @@ public class GameLoop {
                     }
 
                 }
-                //executes when no coordinates are entered for x or y
+                    //executes when no coordinates are entered for x or y
                     else
                     {
-                        System.out.println("you did not enter coordinates");
+                        System.out.println("No coordinates where entered");
                         GameRound();
                     }
             }

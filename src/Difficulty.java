@@ -33,18 +33,21 @@ public class Difficulty {
 
             case "1":
                 System.out.println("You choose easy!!!");
+                System.out.println("Launching game...\n");
                 BoardManagement.BoardGeneration("1");
                 GameLoop.roundTime=40;
                 break;
 
             case "2":
                 System.out.println("You choose normal!!!");
+                System.out.println("Launching game...\n");
                 BoardManagement.BoardGeneration("2");
                 GameLoop.roundTime=35;
                 break;
 
             case "3":
                 System.out.println("You choose hard!!!");
+                System.out.println("Launching game...\n");
                 BoardManagement.BoardGeneration("3");
                 GameLoop.roundTime=30;
                 break;
