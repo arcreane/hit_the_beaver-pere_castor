@@ -37,10 +37,15 @@ public class DisplayMenu {
 
         while (true) {
             System.out.println("""
-                                            Press
-                        Play game           -> 1
-                        High Scores         -> 2
-                        Quit                -> 3
+                        *******************************
+                        ********** Main Menu **********
+                        *******************************
+                        **                    Press  **
+                        ** Play game           -> 1  **
+                        ** High Scores         -> 2  **
+                        ** Quit                -> 3  **
+                        *******************************
+                        *******************************
                         """);
             System.out.println("Please enter your choice : ");
             playerChoiceMenu = scan.nextLine();
