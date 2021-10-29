@@ -37,7 +37,7 @@ public class GameLoop {
     }
 
         static void GameRound() throws IOException, InterruptedException {
-        while (roundNumber<11){
+        while (roundNumber<10){
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
