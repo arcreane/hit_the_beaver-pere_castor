@@ -91,7 +91,7 @@ public class GameLoop {
                 //executes when no coordinates are entered for x or y
                     else
                     {
-                        hitFeedback=("No coordinates were entered");
+                        hitFeedback=("No coordinates were entered. Current score: " + DisplayMenu.scoreManager.getCurrentScore());
                         GameRound();
                     }
             }
