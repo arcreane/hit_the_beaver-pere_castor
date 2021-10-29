@@ -36,14 +36,13 @@ public class DisplayMenu {
                 \n""");
 
         while (true) {
-            System.out.println("What do you want to do : \n");
             System.out.println("""
                                             Press
                         Play game           -> 1
                         High Scores         -> 2
                         Quit                -> 3
                         """);
-            System.out.println("You have selected : ");
+            System.out.println("Please enter your choice : ");
             playerChoiceMenu = scan.nextLine();
 
             /*Condition to avoid string answer*/
