@@ -8,6 +8,8 @@ public class GameLoop {
     static String y_coordinate;
     static int roundNumber;
     static int roundTime = 4;
+    static Boolean arcade = Boolean.FALSE;
+    static int arcadeLives = 3;
 
     public GameLoop() {
     }
@@ -27,8 +29,20 @@ public class GameLoop {
         }
     }
 
+    static void Arcade() throws InterruptedException {
+        arcadeLives--;
+        if (arcadeLives<=0){
+            arcade=Boolean.FALSE;
+        }
+
+        }
+
+
         static void GameRound() throws IOException, InterruptedException {
-        while (roundNumber<10){
+            System.out.println(roundNumber);
+        if (arcadeLives <= 0)
+            roundNumber +=10;
+        while (roundNumber<10 || arcade==Boolean.TRUE){
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
@@ -59,6 +73,7 @@ public class GameLoop {
                     }
                     catch(NumberFormatException N){
                         System.out.println("invalid coordinates please enter only numbers");
+                        Arcade();
                         GameRound();
                     }
                     finally {
@@ -70,6 +85,7 @@ public class GameLoop {
                         else
                         {
                             System.out.println("You missed!");
+                            Arcade();
 
                         }
                         GameRound();
@@ -81,10 +97,11 @@ public class GameLoop {
                     else
                     {
                         System.out.println("you did not enter coordinates");
+                        Arcade();
                         GameRound();
                     }
             }
-
+                //when roundsnumber=10 end of while loop and we call for endgame
                 Endgame();
 
         }

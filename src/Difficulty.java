@@ -5,6 +5,7 @@ public class Difficulty {
 
     static String playerChoiceDifficulty =  "";
 
+
     static void DifficultyMenu() throws IOException, InterruptedException {
 
         while (true) {
@@ -14,14 +15,15 @@ public class Difficulty {
                     1. Easy (table 5x5 with 4s to hit)
                     2. Normal (table 7x7 with 3.5s to hit)
                     3. Hard (table 10x10 with 3s to hit)
-                    4. Back to main menu
+                    4. Arcade
+                    5. Back to main menu
                              
                        """);
 
             System.out.println("Choice : ");
             Scanner scan = new Scanner(System.in);
             playerChoiceDifficulty = scan.nextLine();
-            if (playerChoiceDifficulty.equals("1") || playerChoiceDifficulty.equals("2") || playerChoiceDifficulty.equals("3") || playerChoiceDifficulty.equals("4")) {
+            if (playerChoiceDifficulty.equals("1") || playerChoiceDifficulty.equals("2") || playerChoiceDifficulty.equals("3") || playerChoiceDifficulty.equals("4") || playerChoiceDifficulty.equals("5")) {
                 break;
             } else
                 System.out.println("Please enter a valid choice");
@@ -50,6 +52,14 @@ public class Difficulty {
                 break;
 
             case "4":
+                System.out.println("You choose Arcade mode");
+                BoardManagement.BoardGeneration("1");
+                GameLoop.roundTime=50-GameLoop.roundNumber;
+                GameLoop.arcade=Boolean.TRUE;
+
+                break;
+
+            case "5":
                 System.out.println("You choose to go back to main menu");
                 DisplayMenu.displayMenu();
                 break;
