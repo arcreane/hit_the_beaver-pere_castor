@@ -21,9 +21,9 @@ public class GameLoop {
             }
         }*/
         //game loops for ten rounds, missing the timer for each rounds
-        for (int i = 0; i < 10; i++) {
+        //for (int i = 0; i < 10; i++) {
 
-            PlayerTimer.Timer();
+            //PlayerTimer.Timer();
 
             System.out.println("""
                     Where is the Beaver?!
@@ -60,4 +60,4 @@ public class GameLoop {
         }
 
     }
-}
+//}

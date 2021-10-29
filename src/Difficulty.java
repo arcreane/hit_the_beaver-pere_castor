@@ -55,7 +55,8 @@ public class Difficulty {
 
 
         }
-        GameLoop.GamePlay();
+        PlayerTimer.Timer();
+
     }
 
 }
