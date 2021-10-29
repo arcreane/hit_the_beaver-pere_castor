@@ -1,6 +1,5 @@
-Arthur,3
-Ana,2
-Arthur,4
 Julien,9
-Hugo,14
-
+Hugo,7
+Natalie,5
+Arthur,4
+Ana,3

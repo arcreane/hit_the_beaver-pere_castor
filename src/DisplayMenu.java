@@ -62,12 +62,15 @@ public class DisplayMenu {
                 System.out.println("You choose to watch High scores");
                 scoreManager.sort();
                 scoreManager.getScores();
+                System.out.println("Press Enter to go back");
+                scan.nextLine();
                 displayMenu();
                 break;
 
             default:
                 /* Quit the menu*/
                 System.out.println("See you later!!!!");
+                scoreManager.save();
                 System.exit(0);
 
         }
