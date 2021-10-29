@@ -40,6 +40,7 @@ public class HighScore {
     // Displays high scores.
     public void getScores() {
         System.out.println("""
+        
         *****************************************
         ************  HIT THE BEAVER  ***********
         ************   HALL OF FAME   ***********
@@ -66,7 +67,7 @@ public class HighScore {
 
     // Displays score and asks for name if user is in top 5.
     public void endScreen() {
-        System.out.println("************* HIT THE BEAVER ************\n*****************************************\n");
+        System.out.println("\n************* HIT THE BEAVER ************\n*****************************************\n");
         System.out.println("\t\t\tYour score: " + this.getCurrentScore() + "\n");
 
         if (this.getCurrentScore() > this.scores.get(0).getPoints())  {
