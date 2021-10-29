@@ -29,8 +29,9 @@ public class GameLoop {
                 Thread.sleep(1000L);
         }
         System.out.print("""
-                █▀▀ █▀█ █
-                █▄█ █▄█ ▄
+               
+               █▀▀ █▀█ █
+               █▄█ █▄█ ▄
                 """);
     }
 
@@ -39,7 +40,7 @@ public class GameLoop {
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
-            System.out.println("\n  *** Round " + roundNumber + " ***\n");
+            System.out.println("\n  **** Round " + roundNumber + " of 10 ****\n");
             BoardManagement.BoardDisplay();
 
             //user input in Bufferreader + counter increment to count number of rounds

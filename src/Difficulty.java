@@ -8,14 +8,18 @@ public class Difficulty {
     static void DifficultyMenu() throws IOException, InterruptedException {
 
         while (true) {
-            System.out.println("\nDifficulty selection menu");
             System.out.println("""
-                    1. Easy (table 5x5 with 4s to hit)
-                    2. Normal (table 7x7 with 3.5s to hit)
-                    3. Hard (table 10x10 with 3s to hit)
-                    4. Back to main menu
-                             
-                       """);
+                    \n****************************************************************
+                    ****************** Difficulty Selection Menu *******************
+                    ****************************************************************
+                    **                                                     Press  **
+                    ** Easy (5x5 board with 4s to hit the beaver)           -> 1  **
+                    ** Normal (7x7 board with 3.5s to hit the beaver)       -> 2  **
+                    ** Hard (10x10 board with 3s to hit the beaver)         -> 3  **
+                    ** Back to main menu                                          **
+                    ****************************************************************
+                    ****************************************************************   
+                    """);
 
             System.out.println("Please enter your choice : ");
             Scanner scan = new Scanner(System.in);
@@ -31,7 +35,7 @@ public class Difficulty {
         switch (playerChoiceDifficulty) {
 
             case "1":
-                System.out.println("\nYou choose easy!!!");
+                System.out.println("\nYou choose easy!!!\n");
                 System.out.println("Launching game...\n");
                 BoardManagement.BoardGeneration("1");
                 GameLoop.roundTime=40;
