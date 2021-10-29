@@ -69,6 +69,7 @@ public class GameLoop {
                     }
                     //controls that entered data are numbers
                     try {Integer.parseInt(x_coordinate);
+                    Integer.parseInt(y_coordinate);
                     }
                     catch(NumberFormatException N){
                         System.out.println("invalid coordinates, please enter a numerical value");
