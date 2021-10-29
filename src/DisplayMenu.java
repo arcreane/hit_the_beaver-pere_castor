@@ -6,7 +6,7 @@ public class DisplayMenu {
     static Scanner scan = new Scanner(System.in);
     static HighScore scoreManager = new HighScore(scan);
 
-    static void displayMenu() throws IOException {
+    static void displayMenu() throws IOException, InterruptedException {
 
         scoreManager.importSavedScores();
 
@@ -57,7 +57,7 @@ public class DisplayMenu {
             default:
                 /* Quit the menu*/
                 System.out.println("See you later!!!!");
-                break;
+                System.exit(0);
 
         }
     }

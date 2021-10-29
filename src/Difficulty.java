@@ -5,7 +5,7 @@ public class Difficulty {
 
     static String playerChoiceDifficulty =  "";
 
-    static void DifficultyMenu() throws IOException {
+    static void DifficultyMenu() throws IOException, InterruptedException {
 
         while (true) {
             System.out.println("Hit the beaver !!!!!");
@@ -28,21 +28,25 @@ public class Difficulty {
 
         }
 
+        //difficulty choice changes Board size and timer for each rounds
         switch (playerChoiceDifficulty) {
 
             case "1":
                 System.out.println("You choose easy!!!");
                 BoardManagement.BoardGeneration("1");
+                GameLoop.roundTime=40;
                 break;
 
             case "2":
                 System.out.println("You choose normal!!!");
                 BoardManagement.BoardGeneration("2");
+                GameLoop.roundTime=35;
                 break;
 
             case "3":
                 System.out.println("You choose hard!!!");
                 BoardManagement.BoardGeneration("3");
+                GameLoop.roundTime=30;
                 break;
 
             case "4":

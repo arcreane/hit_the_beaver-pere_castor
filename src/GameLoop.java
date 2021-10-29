@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class GameLoop {
     static String x_coordinate;
     static String y_coordinate;
-    static int score = 0;
     static int roundNumber = 0;
+    static int roundTime = 4;
 
     public GameLoop() {
     }
 
-    static void GameCount() throws IOException {
+    static void GameCount() throws IOException, InterruptedException {
 
 
         DisplayMenu.scoreManager.reset();
@@ -23,67 +23,77 @@ public class GameLoop {
         int i;
         for (i = 0; i < 3; ++i) {
             System.out.println(3 - i);
-
-            try {
                 Thread.sleep(1000L);
-            } catch (InterruptedException var2) {
-                var2.printStackTrace();
-            }
         }
     }
 
-        static void GameRound() throws IOException {
+        static void GameRound() throws IOException, InterruptedException {
+        while (roundNumber<10){
+            //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
+            System.out.print("\033[H\033[2J");
             BoardManagement.BoardDisplay();
 
+            //user input in Bufferreader + counter increment to count number of rounds
             System.out.println("Where is the Beaver?!");
+            roundNumber++;
+            System.out.println("Enter x then y");
+            BufferedReader inx = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader iny = new BufferedReader(new InputStreamReader(System.in));
 
-
-            int x = 6;
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
+            //while loop that keep the round going for roundtime * a tenth of a second or when inputs are ready
             long startTime = System.currentTimeMillis();
-            while ((System.currentTimeMillis() - startTime) < x * 1000 &&
-                    !in.ready()) {
-            }
-            String[] coordinates_input=new String[2];
-
-
-
-            if (in.ready())
+            while ((System.currentTimeMillis() - startTime) < roundTime * 100 &&
+                    !inx.ready() && !iny.ready())
             {
-
-                coordinates_input = in.readLine().split(" ");
-
-                x_coordinate = coordinates_input[0];
-                y_coordinate = coordinates_input[1];
-
-                if (Integer.parseInt(x_coordinate) - 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate) - 1 == BoardManagement.previousY)
-                {
-                    System.out.println("It's a hit!");
-                    DisplayMenu.scoreManager.incrementScore();
-                    roundNumber++;
-                }
-                else
-                {
-                    System.out.println("You missed!");
-                    roundNumber++;
-
-                }
-                GameRound();
             }
-            else
-            {
-                System.out.println("you did not enter data");
-                GameRound();
-                roundNumber++;
+
+
+            //when coordinates are entered if is executed
+                if (inx.ready() && iny.ready())
+                {
+                    x_coordinate = inx.readLine();
+                    y_coordinate = iny.readLine();
+                    //controls that entered data are numbers
+                    try {Integer.parseInt(x_coordinate);
+                    }
+                    catch(NumberFormatException N){
+                        System.out.println("invalid coordinates please enter only numbers");
+                        GameRound();
+                    }
+                    finally {
+                        if (Integer.parseInt(x_coordinate )- 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate )- 1 == BoardManagement.previousY)
+                        {
+                            System.out.println("It's a hit!");
+                            DisplayMenu.scoreManager.incrementScore();
+                        }
+                        else
+                        {
+                            System.out.println("You missed!");
+
+                        }
+                        GameRound();
+
+                    }
+
+                }
+                //executes when no coordinates are entered for x or y
+                    else
+                    {
+                        System.out.println("you did not enter coordinates");
+                        GameRound();
+                    }
             }
+
+                Endgame();
+
         }
-}
 
 
-    /*static void Endgame() {
+
+
+    static void Endgame() throws IOException, InterruptedException {
+        Scanner scan = new Scanner(System.in);
         DisplayMenu.scoreManager.endScreen();
         System.out.print("Play again? Y/N");
         String input = scan.nextLine();
@@ -93,9 +103,10 @@ public class GameLoop {
         }
         if (input.equals("N")) {
             DisplayMenu.displayMenu();
+        } else if (input.equals("Y")) {
+            roundNumber = 0;
+            GameCount();
+            GameRound();
         }
-        else if (input.equals("Y"))  {
-            GamePlay();
-        }
-
-}*/
+    }
+}
