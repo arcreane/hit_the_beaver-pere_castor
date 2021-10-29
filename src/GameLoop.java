@@ -8,6 +8,7 @@ public class GameLoop {
     static String y_coordinate;
     static int roundNumber;
     static int roundTime = 4;
+    static String hitFeedback = " ";
 
     public GameLoop() {
     }
@@ -40,6 +41,7 @@ public class GameLoop {
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
+            System.out.println(hitFeedback);
             System.out.println("\n  **** Round " + roundNumber + " of 10 ****\n");
             BoardManagement.BoardDisplay();
 
@@ -68,19 +70,19 @@ public class GameLoop {
                     Integer.parseInt(y_coordinate);
                     }
                     catch(NumberFormatException N){
-                        System.out.println("invalid coordinates, please enter a numerical value");
+                        hitFeedback="invalid coordinates, please enter a numerical value";
                         GameRound();
                     }
                     finally {
                         if (Integer.parseInt(x_coordinate )- 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate )- 1 == BoardManagement.previousY)
                         {
                             DisplayMenu.scoreManager.incrementScore();
-                            System.out.println("It's a hit! Current score: " + DisplayMenu.scoreManager.getCurrentScore());
+                            hitFeedback="It's a hit! Current score: " + DisplayMenu.scoreManager.getCurrentScore();
 
                         }
                         else
                         {
-                            System.out.println("You missed! Current score: " + DisplayMenu.scoreManager.getCurrentScore());
+                            hitFeedback="You missed! Current score: " + DisplayMenu.scoreManager.getCurrentScore();
 
                         }
                         GameRound();
@@ -90,7 +92,7 @@ public class GameLoop {
                 //executes when no coordinates are entered for x or y
                     else
                     {
-                        System.out.println("No coordinates were entered. Current score: " + DisplayMenu.scoreManager.getCurrentScore());
+                        hitFeedback=("No coordinates were entered");
                         GameRound();
                     }
             }
