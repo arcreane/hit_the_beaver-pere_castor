@@ -11,11 +11,14 @@ public class PlayerTimer {
 
             @Override
             public void run() {
+                BoardManagement.BeaverPlacement();
+                BoardManagement.BoardDisplay();
+
                 counter--;
                 System.out.println(counter);
                 if (counter == 0) {
                     System.out.println("GAME OVER!!!!!");
-                    cancel();
+                    timer.cancel();
                 }
             }
 
