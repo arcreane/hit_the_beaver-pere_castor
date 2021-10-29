@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameLoop {
     static String x_coordinate;
     static String y_coordinate;
-    static int roundNumber = 1;
+    static int roundNumber;
     static int roundTime = 4;
 
     public GameLoop() {
@@ -14,7 +14,7 @@ public class GameLoop {
 
     static void GameCount() throws IOException, InterruptedException {
 
-
+        roundNumber=0;
         DisplayMenu.scoreManager.reset();
 
         //3 sec timer before game start
