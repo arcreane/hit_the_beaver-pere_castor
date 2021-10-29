@@ -16,7 +16,7 @@ public class Difficulty {
                     ** Easy (5x5 board with 4s to hit the beaver)           -> 1  **
                     ** Normal (7x7 board with 3.5s to hit the beaver)       -> 2  **
                     ** Hard (10x10 board with 3s to hit the beaver)         -> 3  **
-                    ** Back to main menu                                          **
+                    ** Back to main menu                                    -> 4  **
                     ****************************************************************
                     ****************************************************************   
                     """);

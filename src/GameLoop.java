@@ -42,7 +42,7 @@ public class GameLoop {
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
             System.out.println(hitFeedback);
-            System.out.println("\n  **** Round " + roundNumber + " of 10 ****\n");
+            System.out.println("\n  **** Round " + (roundNumber+1) + " of 10 ****\n");
             BoardManagement.BoardDisplay();
 
             //user input in Bufferreader + counter increment to count number of rounds
@@ -114,10 +114,8 @@ public class GameLoop {
             DisplayMenu.displayMenu();
         } else if (input.equals("Y")) {
             roundNumber = 0;
-            GameCount();
-            GameRound();
+            Difficulty.DifficultyMenu();
         }
-
 
     }
 }
