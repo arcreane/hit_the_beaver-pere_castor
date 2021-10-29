@@ -50,7 +50,16 @@ public class HighScore {
 
     // Increments score.
     public void incrementScore() {
-        this.points++;
+        int multiplier = Integer.valueOf(Difficulty.playerChoiceDifficulty);
+        if (multiplier == 1) {
+            this.points++;
+        } else if (multiplier == 2) {
+            this.points += 2;
+        } else {
+            this.points++;
+        }
+
+
     }
 
     // Displays score and asks for name if user is in top 5.
@@ -106,7 +115,6 @@ public class HighScore {
 
     // Multiplies points based on difficulty and returns score for current game.
     public int getCurrentScore()  {
-        int multiplier = Integer.valueOf(Difficulty.playerChoiceDifficulty);
-        return this.points * multiplier;
+        return this.points;
     }
 }
