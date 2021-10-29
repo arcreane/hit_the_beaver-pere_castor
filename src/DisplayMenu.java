@@ -71,7 +71,7 @@ public class DisplayMenu {
                 System.out.println("Loading high scores...\n");
                 scoreManager.sort();
                 scoreManager.getScores();
-                System.out.println("Press Enter to access the main menu\n");
+                System.out.println("Press Enter to go back");
                 scan.nextLine();
                 displayMenu();
                 break;
