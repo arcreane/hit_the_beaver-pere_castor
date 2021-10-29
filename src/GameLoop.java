@@ -19,8 +19,8 @@ public class GameLoop {
 
         //3 sec timer before game start
         System.out.println("""
-                █▀▀ █▀▀ ▀█▀   █▀█ █▀▀ ▄▀█ █▀▄ █▄█
-                █▄█ ██▄ ░█░   █▀▄ ██▄ █▀█ █▄▀ ░█░
+                █▀▀ █▀▀ ▀█▀   █▀█ █▀▀ ▄▀█ █▀▄ █▄█ █
+                █▄█ ██▄  █    █▀▄ ██▄ █▀█ █▄▀  █  ▄
                 """);
 
         int i;
@@ -29,8 +29,8 @@ public class GameLoop {
                 Thread.sleep(1000L);
         }
         System.out.print("""
-                █▀▀ █▀█
-                █▄█ █▄█
+                █▀▀ █▀█ █
+                █▄█ █▄█ ▄
                 """);
     }
 
