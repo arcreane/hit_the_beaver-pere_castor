@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameLoop {
     static String x_coordinate;
     static String y_coordinate;
-    static int roundNumber = 0;
+    static int roundNumber = 1;
     static int roundTime = 4;
 
     public GameLoop() {
@@ -18,20 +18,28 @@ public class GameLoop {
         DisplayMenu.scoreManager.reset();
 
         //3 sec timer before game start
-        System.out.println("get ready");
+        System.out.println("""
+                █▀▀ █▀▀ ▀█▀   █▀█ █▀▀ ▄▀█ █▀▄ █▄█
+                █▄█ ██▄ ░█░   █▀▄ ██▄ █▀█ █▄▀ ░█░
+                """);
 
         int i;
         for (i = 0; i < 3; ++i) {
             System.out.println(3 - i);
                 Thread.sleep(1000L);
         }
+        System.out.print("""
+                █▀▀ █▀█
+                █▄█ █▄█
+                """);
     }
 
         static void GameRound() throws IOException, InterruptedException {
-        while (roundNumber<10){
+        while (roundNumber<11){
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
+            System.out.println("\n  *** Round " + roundNumber + " ***\n");
             BoardManagement.BoardDisplay();
 
             //user input in Bufferreader + counter increment to count number of rounds
