@@ -39,8 +39,12 @@ public class HighScore {
 
     // Displays high scores.
     public void getScores() {
-        System.out.println("************* HIT THE BEAVER ************");
-        System.out.println("************** HALL OF FAME *************\n");
+        System.out.println("""
+        *****************************************
+        ************  HIT THE BEAVER  ***********
+        ************   HALL OF FAME   ***********
+        *****************************************
+        """);
         for (int i = 0; i < 5; i++) {
             System.out.println("\t\t\t" + this.scores.get(i));
         }
