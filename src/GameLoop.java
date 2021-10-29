@@ -26,7 +26,7 @@ public class GameLoop {
         int i;
         for (i = 0; i < 3; ++i) {
             System.out.println(3 - i);
-                Thread.sleep(1000L);
+            Thread.sleep(1000L);
         }
         System.out.print("""
                 █▀▀ █▀█ █
@@ -34,8 +34,8 @@ public class GameLoop {
                 """);
     }
 
-        static void GameRound() throws IOException, InterruptedException {
-        while (roundNumber<11){
+    static void GameRound() throws IOException, InterruptedException {
+        while (roundNumber < 11) {
             //Placement of a new beaver,screen refresh and display of the board
             BoardManagement.BeaverPlacement();
             System.out.print("\033[H\033[2J");
@@ -51,73 +51,66 @@ public class GameLoop {
 
             //while loop that keep the round going for roundtime * a tenth of a second or when inputs are ready
             long startTime = System.currentTimeMillis();
-            while ((System.currentTimeMillis() - startTime) < roundTime * 100 &&
-                    !inx.ready() && !iny.ready())
-            {
-            }
+            while ((System.currentTimeMillis() - startTime) < roundTime * 100) {
+                if (!inx.ready() && !iny.ready()) {
+                }
+                else if (inx.ready() && !iny.ready()) {
+                    x_coordinate = inx.readLine();
 
 
-            //when coordinates are entered if is executed
-                if (inx.ready() && iny.ready())
-                {
+                }
+                //when coordinates are entered if is executed
+                else if (inx.ready() && iny.ready()) {
                     x_coordinate = inx.readLine();
                     y_coordinate = iny.readLine();
                     //controls that entered data are numbers
-                    try {Integer.parseInt(x_coordinate);
-                    }
-                    catch(NumberFormatException N){
+                    try {
+                        Integer.parseInt(x_coordinate);
+                    } catch (NumberFormatException N) {
                         System.out.println("invalid coordinates please enter only numbers");
                         GameRound();
-                    }
-                    finally {
-                        if (Integer.parseInt(x_coordinate )- 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate )- 1 == BoardManagement.previousY)
-                        {
+                    } finally {
+                        if (Integer.parseInt(x_coordinate) - 1 == BoardManagement.previousX && Integer.parseInt(y_coordinate) - 1 == BoardManagement.previousY) {
                             System.out.println("It's a hit!");
                             DisplayMenu.scoreManager.incrementScore();
-                        }
-                        else
-                        {
+                        } else {
                             System.out.println("You missed!");
 
                         }
-                        GameRound();
-
                     }
+                    GameRound();
 
                 }
+
+
                 //executes when no coordinates are entered for x or y
-                    else
-                    {
-                        System.out.println("you did not enter coordinates");
-                        GameRound();
-                    }
+                else {
+                    System.out.println("you did not enter coordinates");
+                    GameRound();
+                }
+                //Endgame();
             }
 
-                Endgame();
-
         }
 
+        /*static void Endgame () throws IOException, InterruptedException {
+            Scanner scan = new Scanner(System.in);
+            DisplayMenu.scoreManager.sort();
+            DisplayMenu.scoreManager.endScreen();
+            System.out.print("Play again? Y/N ");
+            String input = scan.nextLine();
+            while (!(input.equals("Y") || input.equals("N") || input.equals("y") || input.equals("n"))) {
+                System.out.print("Invalid command\nPlay again? Y/N ");
+                input = scan.nextLine();
+            }
+            if (input.equals("N") || input.equals("n")) {
+                DisplayMenu.displayMenu();
+            } else if (input.equals("Y")) {
+                roundNumber = 0;
+                GameCount();
+                GameRound();
+            }*/
 
 
-
-    static void Endgame() throws IOException, InterruptedException {
-        Scanner scan = new Scanner(System.in);
-        DisplayMenu.scoreManager.sort();
-        DisplayMenu.scoreManager.endScreen();
-        System.out.print("Play again? Y/N ");
-        String input = scan.nextLine();
-        while (!(input.equals("Y") || input.equals("N") || input.equals("y") || input.equals("n"))) {
-            System.out.print("Invalid command\nPlay again? Y/N ");
-            input = scan.nextLine();
         }
-        if (input.equals("N") || input.equals("n")) {
-            DisplayMenu.displayMenu();
-        } else if (input.equals("Y")) {
-            roundNumber = 0;
-            GameCount();
-            GameRound();
-        }
-
-
     }
-}
