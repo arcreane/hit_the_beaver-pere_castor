@@ -111,7 +111,7 @@ public class GameLoop {
         }
         if (input.equals("N") || input.equals("n")) {
             DisplayMenu.displayMenu();
-        } else if (input.equals("Y")) {
+        } else if (input.equals("Y") || input.equals("y")) {
             roundNumber = 0;
             Difficulty.DifficultyMenu();
         }
