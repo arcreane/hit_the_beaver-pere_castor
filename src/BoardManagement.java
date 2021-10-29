@@ -8,11 +8,11 @@ public class BoardManagement {
 
     //Function to create and fill the table depending on specified dimension depending on difficulty
 
-    static void BoardGeneration(String playerChoiceDifficulty){
+    static void BoardGeneration(String difficultyChoice){
 
-        if (playerChoiceDifficulty.equals("1"))
+        if (difficultyChoice.equals("1"))
             dimension = 5;
-        else if (playerChoiceDifficulty.equals("2"))
+        else if (difficultyChoice.equals("2"))
             dimension = 7;
         else
             dimension = 10;

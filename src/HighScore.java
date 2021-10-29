@@ -54,7 +54,7 @@ public class HighScore {
 
     // Increments score.
     public void incrementScore() {
-        int multiplier = Integer.valueOf(Difficulty.playerChoiceDifficulty);
+        int multiplier = Integer.valueOf(Difficulty.difficultyChoice);
         if (multiplier == 1) {
             this.points++;
         } else if (multiplier == 2) {
@@ -62,8 +62,6 @@ public class HighScore {
         } else {
             this.points++;
         }
-
-
     }
 
     // Displays score and asks for name if user is in top 5.
@@ -73,7 +71,6 @@ public class HighScore {
 
         if (this.getCurrentScore() > this.scores.get(0).getPoints())  {
             System.out.println("*********** NEW HIGH SCORE!!! ***********");
-
         }
 
         if (this.getCurrentScore() > this.scores.get(4).getPoints())  {

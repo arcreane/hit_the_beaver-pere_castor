@@ -63,10 +63,6 @@ public class GameLoop {
                         x_coordinate = xAndY[0];
                         y_coordinate = xAndY[1];
                     }
-                    else {
-                        x_coordinate = input;
-                        y_coordinate = inx.readLine();
-                    }
                     //controls that entered data are numbers
                     try {Integer.parseInt(x_coordinate);
                     Integer.parseInt(y_coordinate);
@@ -94,11 +90,10 @@ public class GameLoop {
                 //executes when no coordinates are entered for x or y
                     else
                     {
-                        System.out.println("No coordinates where entered");
+                        System.out.println("No coordinates were entered. Current score: " + DisplayMenu.scoreManager.getCurrentScore());
                         GameRound();
                     }
             }
-
                 Endgame();
         }
 
@@ -120,7 +115,5 @@ public class GameLoop {
             GameCount();
             GameRound();
         }
-
-
     }
 }

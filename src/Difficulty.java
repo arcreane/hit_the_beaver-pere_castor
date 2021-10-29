@@ -3,36 +3,35 @@ import java.util.Scanner;
 
 public class Difficulty {
 
-    static String playerChoiceDifficulty =  "";
+    static String difficultyChoice =  "";
 
     static void DifficultyMenu() throws IOException, InterruptedException {
 
-        while (true) {
-            System.out.println("""
-                    \n****************************************************************
-                    ****************** Difficulty Selection Menu *******************
-                    ****************************************************************
-                    **                                                     Press  **
-                    ** Easy (5x5 board with 4s to hit the beaver)           -> 1  **
-                    ** Normal (7x7 board with 3.5s to hit the beaver)       -> 2  **
-                    ** Hard (10x10 board with 3s to hit the beaver)         -> 3  **
-                    ** Back to main menu                                          **
-                    ****************************************************************
-                    ****************************************************************   
-                    """);
 
-            System.out.println("Please enter your choice : ");
+        System.out.println("""
+                \n****************************************************************
+                ****************** Difficulty Selection Menu *******************
+                ****************************************************************
+                **                                                     Press  **
+                ** Easy (5x5 board with 4s to hit the beaver)           -> 1  **
+                ** Normal (7x7 board with 3.5s to hit the beaver)       -> 2  **
+                ** Hard (10x10 board with 3s to hit the beaver)         -> 3  **
+                ** Back to main menu                                          **
+                ****************************************************************
+                ****************************************************************   
+                """);
+
+
             Scanner scan = new Scanner(System.in);
-            playerChoiceDifficulty = scan.nextLine();
-            if (playerChoiceDifficulty.equals("1") || playerChoiceDifficulty.equals("2") || playerChoiceDifficulty.equals("3") || playerChoiceDifficulty.equals("4")) {
-                break;
-            } else
-                System.out.println("Please enter a valid choice");
-
+            System.out.print("Please enter your choice : ");
+            difficultyChoice = scan.nextLine();
+            while (!(difficultyChoice.equals("1") || difficultyChoice.equals("2") || difficultyChoice.equals("3") || difficultyChoice.equals("4"))) {
+                System.out.print("Invalid choice\nPlease enter your choice : ");
+                difficultyChoice = scan.nextLine();
         }
 
         //difficulty choice changes Board size and timer for each rounds
-        switch (playerChoiceDifficulty) {
+        switch (difficultyChoice) {
 
             case "1":
                 System.out.println("\nYou choose easy!!!\n");
