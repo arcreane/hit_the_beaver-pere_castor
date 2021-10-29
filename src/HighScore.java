@@ -21,7 +21,7 @@ public class HighScore {
         this.firstRun = true;
     }
 
-    // Method that reads saved scores from file.
+    // Method that reads saved scores from file on first run.
     public void importSavedScores() {
         if (firstRun) {
             try (Scanner reader = new Scanner(Paths.get("scores.txt"))) {
@@ -40,26 +40,26 @@ public class HighScore {
     // Displays high scores.
     public void getScores() {
         System.out.println("************* HIT THE BEAVER ************");
-        System.out.println("************** HALL OF FAME *************\n***\n***");
-
-        for (Score i : this.scores) {
-            System.out.println("***  " + i);
+        System.out.println("************** HALL OF FAME *************\n");
+        for (int i = 0; i < 5; i++) {
+            System.out.println("\t\t\t" + this.scores.get(i));
         }
+        System.out.println("\n*****************************************\n" +
+                "*****************************************");
     }
 
-    // Increments score by 1, 2 or 3 depending on difficulty.
+    // Increments score.
     public void incrementScore() {
         this.points++;
     }
 
     // Displays score and asks for name if user is in top 5.
     public void endScreen() {
-        System.out.println("************* HIT THE BEAVER ************");
-        System.out.println("******** Your score: " + this.getCurrentScore());
-        System.out.println("******");
+        System.out.println("************* HIT THE BEAVER ************\n*****************************************\n");
+        System.out.println("\t\t\tYour score: " + this.getCurrentScore() + "\n");
 
         if (this.getCurrentScore() > this.scores.get(0).getPoints())  {
-            System.out.println("****** NEW HIGH SCORE!!! ********");
+            System.out.println("*********** NEW HIGH SCORE!!! ***********");
 
         }
 
@@ -70,8 +70,8 @@ public class HighScore {
             this.sort();
             this.getScores();
         }
-
     }
+
     // Adds new score
     public void add(String name, int score) {
         this.scores.add(new Score(name, score));
@@ -86,7 +86,7 @@ public class HighScore {
             for (Score i : this.scores) {
                 bw.write(i.getName() + "," + i.getPoints() + "\n");
             }
-            System.out.println("Score successfully added.");
+            System.out.println("Scores successfully saved.");
             bw.close();
 
         } catch (IOException e) {
@@ -104,7 +104,7 @@ public class HighScore {
         Collections.sort(this.scores);
     }
 
-    // Returns score for current game.
+    // Multiplies points based on difficulty and returns score for current game.
     public int getCurrentScore()  {
         int multiplier = Integer.valueOf(Difficulty.playerChoiceDifficulty);
         return this.points * multiplier;

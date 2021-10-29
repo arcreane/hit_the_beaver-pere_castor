@@ -19,7 +19,11 @@ public class Score implements Comparable {
 
     @Override
     public String toString() {
-        return this.name + "\t" + this.points;
+        if (this.name.length() < 4) {
+            return this.name + "\t\t\t" + this.points;
+        } else {
+            return this.name + "\t\t" + this.points;
+        }
     }
 
     @Override

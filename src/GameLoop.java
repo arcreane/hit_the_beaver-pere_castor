@@ -94,19 +94,22 @@ public class GameLoop {
 
     static void Endgame() throws IOException, InterruptedException {
         Scanner scan = new Scanner(System.in);
+        DisplayMenu.scoreManager.sort();
         DisplayMenu.scoreManager.endScreen();
-        System.out.print("Play again? Y/N");
+        System.out.print("Play again? Y/N ");
         String input = scan.nextLine();
-        while (!(input.equals("Y") || !(input.equals("Y")))) {
-            System.out.println("Invalid command");
+        while (!(input.equals("Y") || input.equals("N") || input.equals("y") || input.equals("n"))) {
+            System.out.print("Invalid command\nPlay again? Y/N ");
             input = scan.nextLine();
         }
-        if (input.equals("N")) {
+        if (input.equals("N") || input.equals("n")) {
             DisplayMenu.displayMenu();
         } else if (input.equals("Y")) {
             roundNumber = 0;
             GameCount();
             GameRound();
         }
+
+
     }
 }
